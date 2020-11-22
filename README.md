@@ -12,17 +12,25 @@ https://code.visualstudio.com/docs/remote/containers#_installation
 + Remote Container でこのディレクトリを開く
 + VS Code の Terminal で gcloud コマンドなどが実行できればOK
 
+
+## 初期から構築したい場合
+
+---> 別記事
+
+## この Repo の改修点
+
++ Dockerfile
+  + gcloud コマンドや Terraform コマンドなど
++ devcontainer.json
+  + Host の SSH の設定を引き継ぐため
+  + mount の部分にホストの .ssh を入れる
+
 ## 参考URL
 
 Developing inside a Container
 https://code.visualstudio.com/docs/remote/containers
 
 
-当日ハンズオン part2 においての質問コーナーは以下のスプレッドシートになります!
-https://docs.google.com/spreadsheets/d/1j47RNtAenkc9OmfjdZA2NVp57yI3Euh1ZWOTBjWO9HQ/edit#gid=124281075
 
-担当講師がベストエフォートで回答していきますが、先に進んでいるハンズオン参加者の方も是非ほかの方の質問に答えた上げて下さい!!
-
-助け合い!
 
 #vscodejp
