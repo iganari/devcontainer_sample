@@ -24,6 +24,9 @@ https://code.visualstudio.com/docs/remote/containers#_installation
 + devcontainer.json
   + Host の SSH の設定を引き継ぐため
   + mount の部分にホストの .ssh を入れる
+  + gitconfig も引き継ぐ
++ root で起動する
+  + mount のせい(root以外でマウントできない)
 
 ## 参考URL
 
