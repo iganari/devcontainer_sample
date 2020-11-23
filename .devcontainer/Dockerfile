@@ -32,6 +32,14 @@ CMD [ "sleep", "infinity" ]
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+RUN apt-get update && apt-get install -y google-cloud-sdk
+
+
+# [Optional] If you need ckubectl command
+RUN apt-get install kubectl -y
+
 # [Optional] If you need Terraform command
 # ref: https://github.com/hashicorp/terraform/releases
 # ARG _terraform_version='0.13.5'
@@ -39,13 +47,3 @@ CMD [ "sleep", "infinity" ]
 #     && cd /usr/local/bin/ \
 #     && unzip terraform_${_terraform_version}_linux_amd64.zip \
 #     && rm -f /usr/local/bin/terraform_${_terraform_version}_linux_amd64.zip
-
-USER vscode
-
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-RUN sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-
-# [Optional] If you need ckubectl command
-# RUN sudo apt-get install kubectl -y
-
