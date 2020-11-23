@@ -2,7 +2,11 @@
 	"name": "Docker from Docker",
 	"dockerFile": "Dockerfile",
 	"runArgs": ["--init"],
-	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+		"source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+	],
 	"overrideCommand": false,
 	
 	// Use this environment variable if you need to bind mount your local source code into a new container.
@@ -27,7 +31,7 @@
 	// "postCreateCommand": "docker --version",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode",
+	// "remoteUser": "vscode",
 	"build": {
 		"args": {
 			"UPGRADE_PACKAGES": "true"
